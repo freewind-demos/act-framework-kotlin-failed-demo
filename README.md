@@ -1,20 +1,24 @@
-ActFramework Hello World Demo
-=============================
+ActFramework with Kotlin Failed Demo
+====================================
 
-[ActFramework](actframework.org)继承了Java时代曾经的传奇Web开发框架PlayFramework1的精髓：极简配置，修改免重启。
+在Act Framework中使用Kotlin，失败。
 
-以开发模式运行：
+运行
 
 ```
 ./run_dev
 ```
 
-然后打开<http://192.168.1.102:5460>。修改Java代码，直接刷新浏览器即可看到效果。
-
-产品模式：
+后卡在这一步很久，最后`OutOfMemoryError`：
 
 ```
-./run_prod
+[INFO]
+[INFO] --- exec-maven-plugin:1.6.0:exec (default-cli) @ helloworld ---
+Exception in thread "main" java.lang.OutOfMemoryError: GC overhead limit exceeded
+        at org.osgl.util.FastStr.charArray(FastStr.java:1321)
+        at org.osgl.util.FastStr.toString(FastStr.java:582)
+        at org.osgl.util.FastStr.toLowerCase(FastStr.java:1276)
+
 ```
 
-不支持热修改，但性能会更好。
+看来只能在Java下使用了。
